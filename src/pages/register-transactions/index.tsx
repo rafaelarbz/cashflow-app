@@ -1,29 +1,29 @@
-import { useTranslations } from "../../translations/translations"
-import { TransactionList } from "../../entities/transaction/components/list"
+import { useTranslations } from "@/translations/translations"
+import { TransactionList } from "@/entities/transaction/components/list"
 import { 
     Card, 
     CardContent, 
     CardFooter, 
     CardHeader 
-} from "../../components/ui/card"
-import { Button } from "../../components/ui/button"
+} from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
 import { PlusIcon } from "@radix-ui/react-icons"
-import { ActionMenu, IAction } from "../../components/common/action-menu"
-import { TransactionForm } from "../../entities/transaction/components/form"
+import { ActionMenu, IAction } from "@/components/common/action-menu"
+import { TransactionForm } from "@/entities/transaction/components/form"
 import { 
     Dialog, 
     DialogContent, 
     DialogHeader, 
     DialogTitle,
     DialogTrigger 
-} from "../../components/ui/dialog"
-import { useTransactionFormListHook } from "../../entities/transaction/hooks/transaction-form-list.hook"
-import { Transaction } from "../../entities/transaction/types/transaction.type"
+} from "@/components/ui/dialog"
+import { useTransactionFormListHook } from "@/entities/transaction/hooks/transaction-form-list.hook"
+import { Transaction } from "@/entities/transaction/types/transaction.type"
 import { v4 as uuid4 } from 'uuid'
 import { useCallback } from "react"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "../../components/ui/accordion"
-import { formatCurrency } from "../../utils/formatter"
-import { useTransactionPdfGeneratorHook } from "../../entities/transaction/hooks/transaction-pdf-generator.hook"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import { formatCurrency } from "@/utils/formatter"
+import { useTransactionPdfGeneratorHook } from "@/entities/transaction/hooks/transaction-pdf-generator.hook"
 
 export function RegisterTransactions() {
     const translations = useTranslations()
