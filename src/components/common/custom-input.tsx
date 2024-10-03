@@ -1,20 +1,20 @@
 import { FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
-import { Control, FieldValues, useFormContext } from "react-hook-form"
+import { Control, FieldValues, Path, useFormContext } from "react-hook-form"
 import { Input } from "@/components/ui/input"
 import { ChangeEvent } from "react"
 import { applyMask, MaskName } from "@/utils/mask.util"
 
-interface CustomInputProps {
-    control: Control<FieldValues>,
+interface CustomInputProps<T extends FieldValues> {
+    control: Control<T>,
     type: string,
-    name: string,
+    name: Path<T>,
     label: string,
     maskName?: MaskName,
     placeholder?: string,
     disabled?: boolean
 }
 
-export function CustomInput({ 
+export function CustomInput<T extends FieldValues> ({ 
     control, 
     type,
     name, 
@@ -22,7 +22,7 @@ export function CustomInput({
     maskName, 
     placeholder,
     disabled = false
-}: CustomInputProps) {
+}: CustomInputProps<T>) {
     const { setValue } = useFormContext()
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {

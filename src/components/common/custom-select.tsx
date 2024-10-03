@@ -6,7 +6,7 @@ import {
     SelectItem 
 } from '@/components/ui/select'
 import { useTranslations } from '@/translations/translations'
-import { Control, FieldValues } from 'react-hook-form'
+import { Control, FieldValues, Path } from 'react-hook-form'
 import { 
     FormControl, 
     FormField, 
@@ -20,19 +20,19 @@ export interface IOption {
     value: string
 }
 
-interface CustomSelectProps {
-    control: Control<FieldValues>,
-    name: string,
+interface CustomSelectProps<T extends FieldValues> {
+    control: Control<T>,
+    name: Path<T>,
     label: string,
     options: IOption[]
 }
 
-export function CustomSelect ({
+export function CustomSelect<T extends FieldValues> ({
     control,
     name,
     label,
     options
-}: CustomSelectProps ) {
+}: CustomSelectProps<T> ) {
     const translations = useTranslations()
 
     return (

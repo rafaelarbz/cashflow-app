@@ -10,5 +10,6 @@ export interface Transaction {
     date: string,
     amount: number,
     isZeroed: boolean,
-    repeat: boolean
+    repeat: boolean,
+    formattedAmount: string
 }

@@ -15,19 +15,19 @@ import { formatDate } from '@/utils/formatter'
 import { useTranslations } from '@/translations/translations'
 import { CalendarIcon } from 'lucide-react'
 import { Calendar } from '@/components/ui/calendar'
-import { Control, FieldValues } from 'react-hook-form'
+import { Control, FieldValues, Path } from 'react-hook-form'
 
-interface DatePickerPopoverProps {
-    control: Control<FieldValues>,
-    name: string,
+interface DatePickerPopoverProps<T extends FieldValues> {
+    control: Control<T>,
+    name: Path<T>,
     label: string
 }
 
-export function DatePickerPopover({ 
+export function DatePickerPopover<T extends FieldValues> ({ 
     control, 
     name, 
     label 
-}: DatePickerPopoverProps) {
+}: DatePickerPopoverProps<T>) {
     const translations = useTranslations()
 
     return (
