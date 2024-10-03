@@ -6,7 +6,7 @@ export function AppRoutesProvider() {
     const routes = useRoutes()
 
     return (
-        <Router>
+        <Router basename="/">
             <Routes>
                 {routes.map((route: IRoute, index: number) => (
                     <Route 
