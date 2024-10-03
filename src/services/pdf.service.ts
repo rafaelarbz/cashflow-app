@@ -1,8 +1,4 @@
-import pdfMake from "pdfmake/build/pdfmake"
-import * as pdfFonts from "pdfmake/build/vfs_fonts"
 import { Content, TDocumentDefinitions } from "pdfmake/interfaces"
-
-pdfMake.vfs = pdfFonts.pdfMake.vfs
 
 export interface TableData {
   headers: string[]
@@ -25,10 +21,16 @@ interface PdfProps {
   list?: ListData
 }
 
-export const createPdf = ({title, table, list}: PdfProps) => {
+export const createPdf = async ({ title, table, list }: PdfProps) => {
+  const pdfMake = (await import('pdfmake/build/pdfmake')).default
+  const pdfFonts = await import('pdfmake/build/vfs_fonts')
+  pdfMake.vfs = pdfFonts.pdfMake.vfs
+
   const renderList = (items: ListItem[], level: number = 0): Content[] => {
     return items.flatMap(item => [
-      { text: item.label, margin: [0, 0, 0, 5],
+      { 
+        text: item.label,
+        margin: [0, 0, 0, 5],
         marginLeft: level * 20
       },
       ...(item.children?.length ? renderList(item.children!, level + 1) : [])
@@ -76,6 +78,6 @@ export const createPdf = ({title, table, list}: PdfProps) => {
       },
     },
   }
-  
+
   pdfMake.createPdf(docDefinition).download(`${title}.pdf`)
 }
