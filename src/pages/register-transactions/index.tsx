@@ -19,11 +19,13 @@ import {
 } from "@/components/ui/dialog"
 import { useTransactionFormListHook } from "@/entities/transaction/hooks/transaction-form-list.hook"
 import { Transaction } from "@/entities/transaction/types/transaction.type"
-import { v4 as uuid4 } from 'uuid'
+import { v4 as uuid4 } from "uuid"
 import { useCallback } from "react"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { formatCurrency } from "@/utils/formatter"
 import { useTransactionPdfGeneratorHook } from "@/entities/transaction/hooks/transaction-pdf-generator.hook"
+import { TransactionTypeEnum } from "@/entities/transaction/enums/transaction-type.enum"
+import { PaymentMethodEnum } from "@/entities/transaction/enums/payment-method.enum"
 
 export function RegisterTransactions() {
     const translations = useTranslations()
@@ -31,8 +33,8 @@ export function RegisterTransactions() {
         id: uuid4(),
         description: "",
         quantity: 1,
-        type: "",
-        paymentMethod: "",
+        type: TransactionTypeEnum.INCOME,
+        paymentMethod: PaymentMethodEnum.CASH,
         date: new Date().toISOString(),
         amount: 0,
         isZeroed: false,
@@ -155,7 +157,7 @@ export function RegisterTransactions() {
                                                 {totals && totals.totalIncome > 0 && Object.entries(totals.paymentMethods).map(([method, details]) => (
                                                     <li key={method}>
                                                         <span className="text-sm font-medium">
-                                                            {translations.paymentMethods[method]}:
+                                                            {(translations.paymentMethods as Record<string, string>)[method]}:
                                                             {" "}
                                                             {formatCurrency(details?.income)}
                                                         </span>
@@ -178,7 +180,7 @@ export function RegisterTransactions() {
                                                 {totals && totals.totalExpense > 0 && Object.entries(totals.paymentMethods).map(([method, details]) => (
                                                     <li key={method}>
                                                         <span className="text-sm font-medium">
-                                                            {translations.paymentMethods[method]}:
+                                                            {(translations.paymentMethods as Record<string, string>)[method]}:
                                                             {" "}
                                                             {formatCurrency(details?.expense)}
                                                         </span>

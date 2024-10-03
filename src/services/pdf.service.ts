@@ -1,5 +1,6 @@
 import pdfMake from "pdfmake/build/pdfmake"
 import pdfFonts from "pdfmake/build/vfs_fonts"
+import { Content, TDocumentDefinitions } from "pdfmake/interfaces"
 
 pdfMake.vfs = pdfFonts.pdfMake.vfs
 
@@ -25,7 +26,7 @@ interface PdfProps {
 }
 
 export const createPdf = ({title, table, list}: PdfProps) => {
-  const renderList = (items: ListItem[], level: number = 0): any[] => {
+  const renderList = (items: ListItem[], level: number = 0): Content[] => {
     return items.flatMap(item => [
       { text: item.label, margin: [0, 0, 0, 5],
         marginLeft: level * 20
@@ -34,23 +35,27 @@ export const createPdf = ({title, table, list}: PdfProps) => {
     ])
   }
 
-  const docDefinition: any = {
+  const docDefinition: TDocumentDefinitions = {
     content: [
       { text: title, style: 'header' },
       {
         style: 'table',
         table: {
           headerRows: 1,
-          widths: Array(table.headers.length).fill('*'),
+          widths: Array(table?.headers.length).fill('*'),
           body: [
-            table.headers,
-            ...table.values,
+            ...(Array.isArray(table?.headers) && table.headers.length > 0
+              ? [table.headers]
+              : []),
+            ...(Array.isArray(table?.values) && table.values.length > 0
+              ? [...table.values]
+              : [])
           ],
         },
       },
       ...(list
         ? [
-          { text: list.header, style: 'subheader', margin: [0, 20, 0, 10] },
+          { text: list.header, style: 'subheader', margin: [0, 20, 0, 10] as [number, number, number, number] },
           ...renderList(list.items),
         ]
         : []),
