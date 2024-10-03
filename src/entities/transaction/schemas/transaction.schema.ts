@@ -3,17 +3,17 @@ import { useTranslations } from '@/translations/translations'
 import { TransactionTypeEnum } from '@/entities/transaction/enums/transaction-type.enum'
 import { PaymentMethodEnum } from '@/entities/transaction/enums/payment-method.enum'
 
-export const transactionSchema = (translations: typeof useTranslations) => z.object({
+export const transactionSchema = (t: Record<string, unknown>) => z.object({
     id: z.string().uuid(),
     description: z.string().min(5, {
-        message: translations.fields.size.min.replace('{min}', 5) 
+        message: (t.fields as Record<string, Record<string, string>>).size.min.replace('{min}', '5') 
     }),
     quantity: z.number().min(1),
     type: z.enum([
         TransactionTypeEnum.INCOME,
         TransactionTypeEnum.EXPENSE
     ], { 
-        message: translations.fields.invalidEnum
+        message: (t.fields as Record<string, string>).invalidEnum
     }),
     paymentMethod: z.enum([
         PaymentMethodEnum.BANK_TRANSFER,
@@ -22,7 +22,7 @@ export const transactionSchema = (translations: typeof useTranslations) => z.obj
         PaymentMethodEnum.DEBIT_CARD,
         PaymentMethodEnum.PAYPAL
     ], { 
-        message: translations.fields.invalidEnum
+        message: (t.fields as Record<string, string>).invalidEnum
     }),
     date: z.string().refine(value => !isNaN(Date.parse(value))),
     amount: z.number().nonnegative(),

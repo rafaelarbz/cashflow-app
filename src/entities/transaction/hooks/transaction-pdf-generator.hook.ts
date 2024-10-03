@@ -41,9 +41,9 @@ export const useTransactionPdfGeneratorHook = () => {
         label: `- ${translations.transactions.totals.income}: ${formatCurrency(totals.totalIncome)}`,
         children: 
           Object.entries(totals.paymentMethods)
-          .filter(([method, details]) => details?.income > 0)
+          .filter(([method, details]) => method && details?.income > 0)
           .map(([method, details]) => ({
-            label: `- ${translations.paymentMethods[method]}`,
+            label: `- ${(translations.paymentMethods as Record<string, unknown>)[method]}`,
             children: details?.income > 0 ? [
               { label: `${formatCurrency(details?.income)}` }
             ] : []
@@ -54,9 +54,9 @@ export const useTransactionPdfGeneratorHook = () => {
         label: `- ${translations.transactions.totals.expense}: ${formatCurrency(totals.totalExpense)}`,
         children: 
           Object.entries(totals.paymentMethods)
-          .filter(([method, details]) => details?.expense > 0)
+          .filter(([method, details]) => method && details?.expense > 0)
           .map(([method, details]) => ({
-            label: `- ${translations.paymentMethods[method]}`,
+            label: `- ${(translations.paymentMethods as Record<string, unknown>)[method]}`,
             children: [
               { label: `${formatCurrency(details?.expense)}` }
             ]
