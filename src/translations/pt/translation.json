@@ -1,0 +1,141 @@
+{
+    "common": {
+        "save": "Salvar",
+        "cancel": "Cancelar",
+        "edit": "Editar",
+        "delete": "Excluir",
+        "confirm": "Confirmar",
+        "back": "Voltar",
+        "add": "Adicionar",
+        "update": "Atualizar",
+        "next": "Próximo",
+        "previous": "Anterior",
+        "yes": "Sim",
+        "no": "Não",
+        "close": "Fechar",
+        "loading": "Carregando...",
+        "notFound": "Nada aqui...",
+        "options": "Opções",
+        "actions": "Ações",
+        "noResults": "Sem resultados",
+        "clearAll": "Limpar Tudo",
+        "select": "Selecionar",
+        "attention": "Atenção",
+        "items": "Itens"
+    },
+    "navigation": {
+        "home": "Início",
+        "transactions": "Movimentações",
+        "registerTransactions": "Registrar Movimentação",
+        "reports": "Relatórios",
+        "settings": "Configurações",
+        "profile": "Perfil",
+        "logout": "Sair"
+    },
+    "transactions": {
+        "title": "Movimentações Financeiras",
+        "singleTitle": "Movimentação Financeira",
+        "list": "Lista de Movimentações",
+        "addNew": "Adicionar Movimentação",
+        "income": "Entrada",
+        "expense": "Saída",
+        "amount": "Valor",
+        "date": "Data",
+        "description": "Descrição",
+        "type": "Tipo",
+        "quantity": "Quantidade",
+        "zeroed": "Sem Movimentação (R$0,00)",
+        "paymentMethod": "Método de Pagamento",
+        "noTransactions": "Nenhuma movimentação encontrada.",
+        "repeat": "Repetir Movimentação",
+        "repeatField": "Informe quantas vezes deseja repetir",
+        "totals": {
+            "title": "Resumo Financeiro",
+            "income": "Total de Entradas",
+            "expense": "Total de Saídas",
+            "balance": "Saldo"
+        }
+    },
+    "income": {
+        "title": "Entrada",
+        "add": "Adicionar Entrada",
+        "edit": "Editar Entrada",
+        "amount": "Valor",
+        "date": "Data",
+        "description": "Descrição",
+        "category": "Categoria",
+        "paymentMethod": "Método de Pagamento"
+    },
+    "expense": {
+        "title": "Saída",
+        "add": "Adicionar Saída",
+        "edit": "Editar Saída",
+        "amount": "Valor",
+        "date": "Data",
+        "description": "Descrição",
+        "category": "Categoria",
+        "paymentMethod": "Método de Pagamento"
+    },
+    "reports": {
+        "title": "Relatórios",
+        "exportPdf": "Gerar PDF",
+        "incomeVsExpense": "Entrada vs Saída",
+        "monthlyReport": "Relatório Mensal",
+        "categoryReport": "Relatório por Categoria"
+    },
+    "settings": {
+        "title": "Configurações",
+        "language": "Idioma",
+        "currency": "Moeda",
+        "profile": "Perfil",
+        "security": "Segurança",
+        "dateFormat": "Formato de Data",
+        "currencyFormat": "Formato de Moeda"
+    },
+    "paymentMethods": {
+        "cash": "Dinheiro",
+        "creditCard": "Cartão de Crédito",
+        "debitCard": "Cartão de Débito",
+        "bankTransfer": "Transferência Bancária",
+        "paypal": "PayPal"
+    },
+    "feedback": {
+        "operationSuccess": "A operação foi bem-sucedida.",
+        "operationFailed": "A operação falhou. Por favor, tente novamente.",
+        "validationError": "Há alguns erros de validação. Por favor, verifique sua entrada.",
+        "error": "Ocorreu um erro. Por favor, tente novamente.",
+        "success": "Operação concluída com sucesso.",
+        "noTransactions": "Não há movimentações para exportar."
+    },
+    "development": {
+        "comingSoon": "Em breve...",
+        "inDevelopment": "Em desenvolvimento...",
+        "workingOnIt": "Estamos trabalhando nisso..."
+    },
+    "formats": {
+        "date": "dd/MM/yyyy",
+        "currency": "BRL",
+        "currencyPlaceholder": "R$ 0,00"
+    },
+    "theme": {
+        "title": "Tema",
+        "toggle": "Mudar Tema",
+        "dark": "Escuro",
+        "light": "Claro",
+        "system": "Automático"
+    },
+    "language": {
+        "title": "Idioma",
+        "toggle": "Mudar Idioma"
+    },
+    "fields": {
+        "required": "Este campo é obrigatório.",
+        "size": {
+          "min": "O valor deve ter pelo menos {min} caracteres.",
+          "max": "O valor deve ter no máximo {max} caracteres."
+        },
+        "invalid": "O valor inserido é inválido.",
+        "invalidEnum": "Opção inválida.",
+        "amountMustBePositive": "O valor deve ser maior que zero se não estiver marcada a opção 'Sem Movimentação'."
+    }
+}

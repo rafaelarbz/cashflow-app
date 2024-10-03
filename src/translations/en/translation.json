@@ -1,0 +1,141 @@
+{
+    "common": {
+        "save": "Save",
+        "cancel": "Cancel",
+        "edit": "Edit",
+        "delete": "Delete",
+        "confirm": "Confirm",
+        "back": "Back",
+        "add": "Add",
+        "update": "Update",
+        "next": "Next",
+        "previous": "Previous",
+        "yes": "Yes",
+        "no": "No",
+        "close": "Close",
+        "loading": "Loading...",
+        "notFound": "Nothing here...",
+        "options": "Options",
+        "actions": "Actions",
+        "noResults": "No results",
+        "clearAll": "Clear All",
+        "select": "Select",
+        "attention": "Attention",
+        "items": "Items"
+    },
+    "navigation": {
+        "home": "Home",
+        "transactions": "Transactions",
+        "registerTransactions": "Register Transaction",
+        "reports": "Reports",
+        "settings": "Settings",
+        "profile": "Profile",
+        "logout": "Logout"
+    },
+    "transactions": {
+        "title": "Financial Transactions",
+        "singleTitle": "Financial Transaction",
+        "list": "Transaction List",
+        "addNew": "Add New Transaction",
+        "income": "Income",
+        "expense": "Expense",
+        "amount": "Amount",
+        "date": "Date",
+        "description": "Description",
+        "type": "Type",
+        "quantity": "Quantity",
+        "zeroed": "No Transaction ($0.00)",
+        "paymentMethod": "Payment Method",
+        "noTransactions": "No transactions found.",
+        "repeat": "Repeat Transaction",
+        "repeatField": "Enter how many times you want to repeat",
+        "totals": {
+            "title": "Financial Overview",
+            "income": "Total Income",
+            "expense": "Total Expense",
+            "balance": "Balance"
+        }
+    },
+    "income": {
+        "title": "Income",
+        "add": "Add Income",
+        "edit": "Edit Income",
+        "amount": "Amount",
+        "date": "Date",
+        "description": "Description",
+        "category": "Category",
+        "paymentMethod": "Payment Method"
+    },
+    "expense": {
+        "title": "Expense",
+        "add": "Add Expense",
+        "edit": "Edit Expense",
+        "amount": "Amount",
+        "date": "Date",
+        "description": "Description",
+        "category": "Category",
+        "paymentMethod": "Payment Method"
+    },
+    "reports": {
+        "title": "Reports",
+        "exportPdf": "Export to PDF",
+        "incomeVsExpense": "Income vs Expense",
+        "monthlyReport": "Monthly Report",
+        "categoryReport": "Category Report"
+    },
+    "settings": {
+        "title": "Settings",
+        "language": "Language",
+        "currency": "Currency",
+        "profile": "Profile",
+        "security": "Security",
+        "dateFormat": "Date Format",
+        "currencyFormat": "Currency Format"
+    },
+    "paymentMethods": {
+        "cash": "Cash",
+        "creditCard": "Credit Card",
+        "debitCard": "Debit Card",
+        "bankTransfer": "Bank Transfer",
+        "paypal": "PayPal"
+    },
+    "feedback": {
+        "operationSuccess": "The operation was successful.",
+        "operationFailed": "The operation failed. Please try again.",
+        "validationError": "There are some validation errors. Please check your input.",
+        "error": "An error occurred. Please try again.",
+        "success": "Operation completed successfully.",
+        "noTransactions": "There are no transactions to export."
+    },
+    "development": {
+        "comingSoon": "Coming soon...",
+        "inDevelopment": "In development...",
+        "workingOnIt": "We are working on it..."
+    },
+    "formats": {
+        "date": "MM/dd/yyyy",
+        "currency": "USD",
+        "currencyPlaceholder": "$0.00"
+    },
+    "theme": {
+        "title": "Theme",
+        "toggle": "Toggle Theme",
+        "dark": "Dark",
+        "light": "Light",
+        "system": "System"
+    },
+    "language": {
+        "title": "Language",
+        "toggle": "Toggle Language"
+    },
+    "fields": {
+        "required": "This field is required.",
+        "size": {
+          "min": "The value must have at least {min} characters.",
+          "max": "The value must have no more than {max} characters."
+        },
+        "invalid": "The entered value is invalid.",
+        "invalidEnum": "Invalid option.",
+        "amountMustBePositive": "The value must be greater than zero if the 'No Transaction' option is not checked."
+    }
+}
