@@ -1,83 +1,52 @@
-import { Content, TDocumentDefinitions } from "pdfmake/interfaces"
+import jsPDF from "jspdf"
+import autoTable, { jsPDFDocument, RowInput } from "jspdf-autotable"
 
-export interface TableData {
-  headers: string[]
-  values: (string | number)[][]
-}
-  
-export interface ListItem {
-  label: string
-  children?: ListItem[]
+export interface TableHeader {
+  text: string
+  colSpan?: number
+  rowSpan?: number
 }
 
-export interface ListData {
-  header: string
-  items: ListItem[]
+export interface TableConfig<T> {
+  headers: TableHeader[]
+  data: T[]
+  styles?: unknown
 }
 
-interface PdfProps {
+export const createPdf = async(options: {
   title: string
-  table?: TableData
-  list?: ListData
-}
+  tables: TableConfig<RowInput>[]
+}) => {
+  const doc = new jsPDF()
 
-export const createPdf = async ({ title, table, list }: PdfProps) => {
-  const pdfMake = (await import('pdfmake/build/pdfmake')).default
-  const pdfFonts = await import('pdfmake/build/vfs_fonts')
-  pdfMake.vfs = pdfFonts.pdfMake.vfs
+  doc.setFontSize(22)
+  doc.text(options.title, 14, 20)
 
-  const renderList = (items: ListItem[], level: number = 0): Content[] => {
-    return items.flatMap(item => [
-      { 
-        text: item.label,
-        margin: [0, 0, 0, 5],
-        marginLeft: level * 20
-      },
-      ...(item.children?.length ? renderList(item.children!, level + 1) : [])
-    ])
-  }
+  let startY = 35
 
-  const docDefinition: TDocumentDefinitions = {
-    content: [
-      { text: title, style: 'header' },
-      {
-        style: 'table',
-        table: {
-          headerRows: 1,
-          widths: Array(table?.headers.length).fill('*'),
-          body: [
-            ...(Array.isArray(table?.headers) && table.headers.length > 0
-              ? [table.headers]
-              : []),
-            ...(Array.isArray(table?.values) && table.values.length > 0
-              ? [...table.values]
-              : [])
-          ],
-        },
-      },
-      ...(list
-        ? [
-          { text: list.header, style: 'subheader', margin: [0, 20, 0, 10] as [number, number, number, number] },
-          ...renderList(list.items),
-        ]
-        : []),
-    ],
-    styles: {
-      header: {
-        fontSize: 22,
-        bold: true,
-        margin: [0, 0, 0, 10],
-      },
-      subheader: {
-        fontSize: 18,
-        bold: true,
-        margin: [0, 10, 0, 5],
-      },
-      table: {
-        margin: [0, 5, 0, 15],
-      },
-    },
-  }
+  options.tables.forEach((tableConfig, index) => {
+    const { headers, data, styles } = tableConfig
 
-  pdfMake.createPdf(docDefinition).download(`${title}.pdf`)
+    const formattedHeaders = headers.map(header => [header.text])
+
+    const automaticColumnStyles = Object.keys(headers).reduce((styles, headerIndex) => {
+      return {
+        ...styles,
+        [headerIndex]: { columnWidth: "auto" },
+      }
+    }, {})
+
+    autoTable(doc, {
+      head: [formattedHeaders],
+      body: data,
+      startY: startY,
+      margin: { horizontal: 14 },
+      styles: styles || {},
+      columnStyles: index === 0 ? automaticColumnStyles : undefined
+    })
+
+    startY = (doc as jsPDFDocument).lastAutoTable.finalY + 10
+  })
+
+  doc.save(`document.pdf`)
 }
